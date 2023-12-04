@@ -1,0 +1,22 @@
+﻿@model List<Author>
+
+@{
+    ViewBag.Title = "ss";
+}
+<ul>
+    <li><a asp-action="Create" asp-controller="Author" class="btn btn-primary">Yeni Ekle</a>  </li>
+@foreach(var item  in Model)
+{
+    <li>
+        <a href="@Url.Action("Edit","Author", new { id = item.Id })">@item.Fullname</a>
+            <a href="@Url.Action("Delete","Author", new { id = item.Id })">Sil</a>
+            @if (item.IsActive)
+            {
+            <a href="@Url.Action("Passive","Author", new { id = item.Id })">Pasif Et</a>    
+            }
+            else{
+                <a href="@Url.Action("Active","Author", new { id = item.Id })">Aktif Et</a>
+            }
+    </li>
+}
+</ul>

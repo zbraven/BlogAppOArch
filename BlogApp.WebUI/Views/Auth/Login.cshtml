@@ -1,0 +1,73 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link asp-append-version="true" rel="stylesheet" href="~/_admin/css/theme.min.css">
+    <link asp-append-version="true" href="~/_admin/css/phosphor_icons.css" rel="stylesheet" type="text/css">
+    <title>Toplavionvion Giriş</title>
+</head>
+<body>
+    <main class="container d-flex flex-column">
+        <div class="row align-items-center justify-content-center g-0 min-vh-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xxl-4 py-8 py-xl-0">
+                <div class="card smooth-shadow-md">
+                    <div class="card-body p-6">
+                        <div class="mb-4">
+                            <a href="../index.html"><img src="~/_admin/images/logo-2.svg" class="mb-2 text-inverse" alt="Image"></a>
+                            <p class="mb-6">Lütfen kullanıcı bilgilerinizi giriniz</p>
+                        </div>
+                        <form asp-action="Login" asp-controller="Auth"
+                              data-ajax="true" data-ajax-method="POST"
+                              data-ajax-success="OnFormSuccess">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Telefon</label>
+                                <input type="text" class="form-control" name="Phone" placeholder="Telefon" required="">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Şifre</label>
+                                <input type="password" class="form-control" name="Password" placeholder="**************" required="">
+                            </div>
+                            <div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script asp-append-version="true" src="~/_admin/js/jquery.min.js"></script>
+    <script asp-append-version="true" src="~/_admin/js/bootstrap.bundle.min.js"></script>
+    <script asp-append-version="true" src="~/_admin/js/simplebar.min.js"></script>
+    <script asp-append-version="true" src="~/_admin/js/theme.min.js"></script>
+    <script asp-append-version="true" src="~/_admin/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script asp-append-version="true" src="~/_admin/js/layout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" asp-append-version="true"></script>
+    <script>
+        function OnFormSuccess(result) {
+            if (result.isSucceed) {
+                location.href = result.redirect;
+            }
+            else {
+                if (result.errors != null && result.errors.length > 0) {
+                    layout.error_message_list(result.title, result.message, result.errors)
+                }
+                else {
+                    layout.error_message(result.title, result.message);
+                }
+            }
+        };
+
+        function BeginForm() {
+            $(".loginLoader").css("display", "block");
+        };
+    </script>
+</body>
+</html>

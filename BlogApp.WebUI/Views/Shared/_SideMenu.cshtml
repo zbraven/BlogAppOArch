@@ -1,0 +1,43 @@
+﻿<li class="nav-item">
+    <a class="nav-link has-arrow" href="/">
+        <i class="ph-house me-2 icon-xxs"></i> Dashboard
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link has-arrow" href="@Url.Action("Index","Order")">
+        <i class="ph-books me-2 icon-xxs"></i> Siparişler
+    </a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link has-arrow collapsed" href="#!" data-bs-toggle="collapse" data-bs-target="#navUrun" aria-expanded="false" aria-controls="navUrun">
+        <i class="ph-notebook me-2 icon-xxs"></i> Ürün Yönetimi
+    </a>
+    <div id="navUrun" class="collapse " data-bs-parent="#sideNavbar">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link has-arrow" href="@Url.Action("Index","Product")">Ürünler</a></li>
+            <li class="nav-item"><a class="nav-link has-arrow" href="@Url.Action("Index","Category")">Kategoriler</a></li>
+            <li class="nav-item"><a class="nav-link has-arrow" href="@Url.Action("Index","Brand")">Markalar</a></li>
+        </ul>
+    </div>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link has-arrow" href="@Url.Action("Index","Department")">
+        <i class="ph-house me-2 icon-xxs"></i> Reyonlar
+    </a>
+</li>
+
+<li class="nav-item">
+    <div class="navbar-heading">Ayarlar ve Tanımlar</div>
+</li>
+<li class="nav-item">
+    <a class="nav-link has-arrow" href="@Url.Action("Index","Employee")">
+        <i class="ph-users-four me-2 icon-xxs"></i> Personeller
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link has-arrow" href="@Url.Action("Index","Role")">
+        <i class="ph-lock me-2 icon-xxs"></i> Roller
+    </a>
+</li>

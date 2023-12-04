@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="~/_admin/images/favicon.ico">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="~/_admin/css/phosphor_icons.css" rel="stylesheet" asp-append-version="true">
+    <link href="~/_admin/css/simplebar.min.css" rel="stylesheet" asp-append-version="true">
+    <link rel="stylesheet" href="~/_admin/css/theme.min.css" asp-append-version="true">
+    <link href="~/_admin/css/dataTables.bootstrap5.min.css" rel="stylesheet" asp-append-version="true">
+    @RenderSection("styles", false)
+    
+    <link href="~/_admin/css/custom.css" rel="stylesheet" asp-append-version="true">
+</head>
+
+<body>
+    <div class="loader">
+        <div>
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <h3>Lütfen Bekleyiniz...</h3>
+        </div>
+    </div>
+
+    <main id="main-wrapper" class="main-wrapper">
+        <div class="header">
+            <div class="navbar-custom navbar navbar-expand-lg">
+                <div class="container-fluid px-0">
+                    <a class="navbar-brand d-block d-md-none" href="/">
+                        <img src="~/_admin/images/logo-2.svg" alt="Image">
+                    </a>
+
+                    <a id="nav-toggle" href="#!" class="ms-auto ms-md-0 me-0 me-lg-3 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-text-indent-left text-muted" viewBox="0 0 16 16">
+                            <path d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708zM7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </a>
+                    <span id="pageTitle">Toplavionvion</span>
+                    
+                    <ul class="navbar-nav navbar-right-wrap ms-lg-auto d-flex nav-top-wrap align-items-center ms-4 ms-lg-0">
+                        <li class="dropdown ms-2">
+                            <a class="rounded-circle" href="#!" role="button" id="dropdownUser"
+                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="avatar avatar-md avatar-indicators avatar-online">
+                                    <img alt="avatar" src="~/_admin/images/avatar-11.jpg" class="rounded-circle">
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end"
+                                 aria-labelledby="dropdownUser">
+                                <div class="px-4 pb-0 pt-2">
+                                    <div class="lh-1 ">
+                                        <h5 class="mb-1"> John E. Grainger</h5>
+                                        <a href="#!" class="text-inherit fs-6">View my profile</a>
+                                    </div>
+                                    <div class=" dropdown-divider mt-3 mb-2"></div>
+                                </div>
+
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center" href="#!">
+                                            <i class="me-2 icon-xxs dropdown-item-icon" data-feather="user"></i>Edit
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                           href="#!">
+                                            <i class="me-2 icon-xxs dropdown-item-icon"
+                                               data-feather="activity"></i>Activity Log
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center" href="#!">
+
+                                            <i class="me-2 icon-xxs dropdown-item-icon"
+                                               data-feather="settings"></i>Settings
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="../index.html">
+                                            <i class="me-2 icon-xxs dropdown-item-icon"
+                                               data-feather="power"></i>Sign Out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-vertical navbar nav-dashboard">
+            <div class="h-100" data-simplebar>
+                <a class="navbar-brand" href="/">
+                    <img src="~/_admin/images/logo-2.svg" alt="Toplavionvion">
+                </a>
+                <ul class="navbar-nav flex-column" id="sideNavbar">
+                    @await Html.PartialAsync("_SideMenu")
+                </ul>
+            </div>
+        </div>
+
+        <div id="app-content">
+            <div class="app-content-area">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="~/_admin/js/jquery.min.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="~/_admin/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+    <script src="~/_admin/js/simplebar.min.js" asp-append-version="true"></script>
+    <script src="~/_admin/js/theme.min.js" asp-append-version="true"></script>
+    <script src="~/_admin/js/popper.min.js" asp-append-version="true"></script>
+    <script src="~/_admin/js/tippy-bundle.umd.min.js" asp-append-version="true"></script>
+    <script src="~/_admin/js/tooltip.js" asp-append-version="true"></script>
+    <script src="~/_admin/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+    <script src="~/_admin/js/dataTables.bootstrap5.min.js" asp-append-version="true"></script>
+    <script src="~/_admin/js/dataTables.responsive.min.js" asp-append-version="true"></script>
+    <script src="~/_admin/js/jquery.unobtrusive-ajax.min.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" asp-append-version="true"></script>
+    <script src="~/_admin/js/layout.js" asp-append-version="true"></script>
+
+    <script>
+        $(document).ready(function(){
+            var pageWidth = $(window).width();
+            if (pageWidth <= 1000) $("#main-wrapper").addClass("toggled");
+            else $("#main-wrapper").removeClass("toggled");
+        });
+    </script>
+
+    @RenderSection("Scripts", false)
+</body>
+</html>
